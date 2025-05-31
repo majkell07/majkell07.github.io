@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strona główna</title>
+    <link rel="stylesheet" href="pomoc2/layout.css">
+    <link rel="stylesheet" href="pomoc2/menu.css">
+    <link rel="stylesheet" href="pomoc2/table.css">
+    <style>
+
+ #slider {
+      position: relative;
+      width: 100%;
+      max-width: 800px;
+      height: 500px;
+      overflow: hidden;
+      border: 4px solid #fff;
+      border-radius: 10px;
+    }
+
+    .slide {
+      display: none;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    .slide.active {
+      display: block;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    .info {
+      position: absolute;
+      bottom: 10px;
+      left: 20px;
+      font-size: 1rem;
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+
+    </style>
+    </head>
+<body>
+    
+    <header> <h1> <center>Nasza Biblioteka! Czyli Odrobina Informacji o Nas</center> </h1></header>
+    <!-- znacznik do menu -->
+    <nav>
+        <ul>
+            <li><a href="STRONA GŁÓWNA.HTML">STRONA GŁÓWNA</a></li>
+            <li><a href="AKTUALNOŚCI.HTML">AKTUALNOŚCI</a></li>
+            <li><a href="OFERTA.HTML">OFERTA BIBLIOTEKI</a></li>
+            <li><a href="WYPOŻYCZALNIA.HTML">WYPOŻYCZALNIA</a></li>
+            <li><a href="REJESTRACJA.HTML">REJESTRACJA</a></li>
+            <li><a href="FORUM_DYSKUSYJNE.HTML">FORUM DYSKUSYJNE</a></li>
+            <li><a href="RANKING_CZYTELNIKÓW.HTML">RANKING CZYTELNIKÓW</a></li>
+            <li><a href="GALERIA.HTML">GALERIA</a></li>
+            <li><a href="NASZA_BIBLIOTEKA.HTML">NASZA BIBLIOTEKA</a></li>
+            <li><a href="MAPA_.HTML">MAPA</a></li>
+        </ul>
+    </nav>
+    <article>
+        <h2><center>Godziny otwarcia biblioteki</center></h2>
+       <table>
+            <tr>
+                <th rowspan="2">Dzień tygodnia</th>
+                <th colspan="11">Godziny</th>
+            </tr>
+            <tr>
+                <th>8</th>
+                <th>9</th>
+                <th>10</th>
+                <th>11</th>
+                <th>12</th>
+                <th>13</th>
+                <th>14</th>
+                <th>15</th>
+                <th>16</th>
+                <th>17</th>
+                <th>18</th>
+            </tr>
+            <tr>
+                <td>Poniedziałek</td>
+               
+                <td colspan="7" class="zajety">8:00 - 14:00</td>
+                <td colspan="4" class="wolny"></td>
+            </tr>
+            <tr>
+                <td>Wtorek</td>
+            
+                
+                <td colspan="11" class="zajety">8:00 - 18:00</td>
+            </tr>
+            <tr>
+                <td>Środa</td>
+               
+                
+                <td colspan="8" class="zajety">8:00 - 16:00</td><td colspan="3" class="wolny"></td>
+            </tr>
+             <tr>
+                <td>Czawartek</td>
+                
+                <td colspan="2" class="wolny"></td>
+                <td colspan="9" class="zajety">10:00 - 18:00</td>
+            </tr>
+             <tr>
+                <td>Piątek</td>
+                
+                
+                <td colspan="8" class="zajety">8:00 - 15:00</td><td colspan="3" class="wolny"></td>
+            </tr>
+             <tr>
+                <td>Sobota</td>
+               
+                <td colspan="2" class="wolny"></td>
+                <td colspan="5" class="zajety">10:00 - 14:00</td><td colspan="4" class="wolny"></td>
+            </tr>
+             <tr>
+                <td>Niedziela</td>
+               
+                <td colspan="2" class="wolny"></td>
+                <td colspan="4" class="zajety">10:00 - 13:00</td><td colspan="5" class="wolny"></td>
+            </tr>
+        </table>
+<br><br><br>
+
+ <center><div id="slider">
+  <img src="iskra/Slajd1.JPG" class="slide active" alt="1">
+  <img src="iskra/Slajd2.JPG" class="slide" alt="2">
+  <img src="iskra/Slajd3.JPG" class="slide" alt="3">
+  <img src="iskra/Slajd4.JPG" class="slide" alt="4">
+  <img src="iskra/Slajd5.JPG" class="slide" alt="5">
+  <div class="info">Użyj strzałek ← → aby przewijać</div>
+</div></center> 
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  let current = 0;
+
+  function showSlide(index) {
+    slides.forEach(slide => slide.classList.remove('active'));
+    slides[index].classList.add('active');
+  }
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'ArrowRight') {
+      current = (current + 1) % slides.length;
+      showSlide(current);
+    }
+    if (event.key === 'ArrowLeft') {
+      current = (current - 1 + slides.length) % slides.length;
+      showSlide(current);
+    }
+  });
+</script>
+
+
+    </article>
+
+     <aside><iframe src="pomoc2/Sesja.html" height="750" width="250"></iframe></aside>
+
+    <footer>
+        
+        Projekt strony internetowej wykonany w ramach zaliczenia przedmiotu MO: TIiSKwE na kierunku Energetyka. <br>
+        Prawa autorskie Michał Wojtysiak
+    </footer>
+
+</body>
+</html>

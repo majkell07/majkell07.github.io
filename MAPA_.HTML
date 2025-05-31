@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strona główna</title>
+    <link rel="stylesheet" href="pomoc2/layout.css">
+    <link rel="stylesheet" href="pomoc2/menu.css">
+     <style>
+   .map-container {
+      position: relative;
+      max-width: 800px;
+    }
+
+    .map-container img {
+      width: 100%;
+      height: auto;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .modal.active {
+      display: flex;
+    }
+
+    .modal-content {
+      background: #333;
+      padding: 20px;
+      border-radius: 8px;
+    }
+
+    .modal button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      background: #ff6f61;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .modal button:hover {
+      background: #ff4f41;
+    }
+  </style>
+  
+    </head>
+<body>
+    
+    <header> <h1> <center>Mapa</center>  </h1></header>
+    <!-- znacznik do menu -->
+    <nav>
+        <ul>
+            <li><a href="STRONA GŁÓWNA.HTML">STRONA GŁÓWNA</a></li>
+            <li><a href="AKTUALNOŚCI.HTML">AKTUALNOŚCI</a></li>
+            <li><a href="OFERTA.HTML">OFERTA BIBLIOTEKI</a></li>
+            <li><a href="WYPOŻYCZALNIA.HTML">WYPOŻYCZALNIA</a></li>
+            <li><a href="REJESTRACJA.HTML">REJESTRACJA</a></li>
+            <li><a href="FORUM_DYSKUSYJNE.HTML">FORUM DYSKUSYJNE</a></li>
+            <li><a href="RANKING_CZYTELNIKÓW.HTML">RANKING CZYTELNIKÓW</a></li>
+            <li><a href="GALERIA.HTML">GALERIA</a></li>
+            <li><a href="NASZA_BIBLIOTEKA.HTML">NASZA BIBLIOTEKA</a></li>
+            <li><a href="MAPA_.HTML">MAPA</a></li>
+        </ul>
+    </nav>
+    <article>
+      <h1>Mapa Interaktywna Biblioteki</h1>
+  <div class="map-container">
+    <img src="Zdjeca/PlanBIB.png" alt="Mapa biblioteki" usemap="#library-map">
+    <map name="library-map">
+      <!-- Obszary interaktywne -->
+      <area shape="rect" coords="20,20,200,240" href="#" data-info="Wypożyczalnia: Miejsce, gdzie można wypożyczyć książki.">
+      <area shape="rect" coords="340,0,800,240" href="#" data-info="Czytelnia: Pomieszczenie przeznaczone do czytania i pracy.">
+      <area shape="rect" coords="0,240,240,600" href="#" data-info="Magazyn: Miejsce przechowywania dodatkowych zasobów.">
+      <area shape="rect" coords="240,240,400,380" href="#" data-info="Szatnia: Miejsce na odzież wierzchnią użytkowników.">
+      <area shape="rect" coords="500,240,800,380" href="#" data-info="Dyrekcja: Biuro administracyjne biblioteki.">
+      <area shape="rect" coords="220,140,800,600" href="#" data-info="Główny zbiór zasobów: Najważniejsze książki i materiały biblioteczne.">
+    </map>
+  </div>
+
+  <div class="modal" id="info-modal">
+    <div class="modal-content">
+      <p id="modal-text"></p>
+      <button onclick="closeModal()">Zamknij</button>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const areas = document.querySelectorAll('area');
+      const modal = document.getElementById('info-modal');
+      const modalText = document.getElementById('modal-text');
+
+      areas.forEach(area => {
+        area.addEventListener('click', (e) => {
+          e.preventDefault();
+          const info = area.dataset.info;
+          modalText.textContent = info;
+          modal.classList.add('active');
+        });
+      });
+    });
+
+    function closeModal() {
+      const modal = document.getElementById('info-modal');
+      modal.classList.remove('active');
+    }
+  </script>
+    </article>
+
+     <aside><iframe src="pomoc2/Sesja.html" height="750" width="250"></iframe></aside>
+
+    <footer>
+        
+        Projekt strony internetowej wykonany w ramach zaliczenia przedmiotu MO: TIiSKwE na kierunku Energetyka. <br>
+        Prawa autorskie Michał Wojtysiak
+    </footer>
+
+</body>
+</html>
+
+

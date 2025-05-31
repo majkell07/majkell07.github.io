@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strona główna</title>
+    <link rel="stylesheet" href="pomoc2/layout.css">
+    <link rel="stylesheet" href="pomoc2/menu.css">
+    <style>
+    
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 10px;
+      padding: 20px;
+      width: 90%;
+      max-width: 1200px;
+    }
+    .gallery img {
+      width: 100%;
+      height: auto;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: transform 0.3s ease;
+    }
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      justify-content: center;
+      align-items: center;
+    }
+    .modal img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 8px;
+    }
+    .modal.active {
+      display: flex;
+    }
+  </style>
+    </head>
+<body>
+    
+    <header> <h1> <center>Galeria Zdjęć Bilblioteki "Iskierka"</center> </h1></header>
+    <!-- znacznik do menu -->
+    <nav>
+        <ul>
+            <li><a href="STRONA GŁÓWNA.HTML">STRONA GŁÓWNA</a></li>
+            <li><a href="AKTUALNOŚCI.HTML">AKTUALNOŚCI</a></li>
+            <li><a href="OFERTA.HTML">OFERTA BIBLIOTEKI</a></li>
+            <li><a href="WYPOŻYCZALNIA.HTML">WYPOŻYCZALNIA</a></li>
+            <li><a href="REJESTRACJA.HTML">REJESTRACJA</a></li>
+            <li><a href="FORUM_DYSKUSYJNE.HTML">FORUM DYSKUSYJNE</a></li>
+            <li><a href="RANKING_CZYTELNIKÓW.HTML">RANKING CZYTELNIKÓW</a></li>
+            <li><a href="GALERIA.HTML">GALERIA</a></li>
+            <li><a href="NASZA_BIBLIOTEKA.HTML">NASZA BIBLIOTEKA</a></li>
+            <li><a href="MAPA_.HTML">MAPA</a></li>
+        </ul>
+    </nav>
+
+
+
+    <article>
+       
+       <h1>Galeria zdjęć</h1>
+  <div class="gallery">
+    <img src="Zdjeca/bib1.jpg" alt="Zdjęcie 1">
+    <img src="Zdjeca/bib2.jpg" alt="Zdjęcie 2">
+    <img src="Zdjeca/dzień biblotek.png" alt="Zdjęcie 3">
+    <img src="Zdjeca/Wrony.jpg" alt="Zdjęcie 4">
+    <img src="Zdjeca/Kruki.jpg" alt="Zdjęcie 5">
+  </div>
+
+  <div class="modal">
+    <img src="" alt="Powiększone zdjęcie">
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const gallery = document.querySelector('.gallery');
+      const modal = document.querySelector('.modal');
+      const modalImg = modal.querySelector('img');
+      const images = Array.from(gallery.querySelectorAll('img'));
+      let currentIndex = -1;
+
+      const openModal = (index) => {
+        currentIndex = index;
+        modalImg.src = images[currentIndex].src;
+        modal.classList.add('active');
+      };
+
+      const closeModal = () => {
+        modal.classList.remove('active');
+        currentIndex = -1;
+      };
+
+      const showNextImage = () => {
+        if (currentIndex < images.length - 1) {
+          openModal(currentIndex + 1);
+        }
+      };
+
+      const showPrevImage = () => {
+        if (currentIndex > 0) {
+          openModal(currentIndex - 1);
+        }
+      };
+
+      gallery.addEventListener('click', (e) => {
+        if (e.target.tagName === 'IMG') {
+          const index = images.indexOf(e.target);
+          openModal(index);
+        }
+      });
+
+      modal.addEventListener('click', closeModal);
+
+      document.addEventListener('keydown', (e) => {
+        if (modal.classList.contains('active')) {
+          if (e.key === 'ArrowRight') {
+            showNextImage();
+          } else if (e.key === 'ArrowLeft') {
+            showPrevImage();
+          } else if (e.key === 'Escape') {
+            closeModal();
+          }
+        }
+      });
+    });
+  </script>
+    </article>
+
+     <aside><iframe src="pomoc2/Sesja.html" height="750" width="250"></iframe></aside>
+
+    <footer>
+        
+        Projekt strony internetowej wykonany w ramach zaliczenia przedmiotu MO: TIiSKwE na kierunku Energetyka. <br>
+        Prawa autorskie Michał Wojtysiak
+    </footer>
+
+</body>
+</html>

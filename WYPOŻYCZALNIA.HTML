@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strona główna</title>
+    <link rel="stylesheet" href="pomoc2/layout.css">
+    <link rel="stylesheet" href="pomoc2/menu.css">
+    <style>
+   
+  
+    input {
+      margin: 5px;
+      padding: 6px;
+      width: 100px;
+    }
+    button {
+      padding: 6px 12px;
+      margin-top: 10px;
+    }
+    #result {
+      margin-top: 15px;
+      font-weight: bold;
+    }
+  </style>
+    </head>
+<body>
+    
+    <header> <h1><center>Wypżycz Książkę z Bilblioteki "Iskierka"</center>  </h1></header>
+    <!-- znacznik do menu -->
+    <nav>
+        <ul>
+            <li><a href="STRONA GŁÓWNA.HTML">STRONA GŁÓWNA</a></li>
+            <li><a href="AKTUALNOŚCI.HTML">AKTUALNOŚCI</a></li>
+            <li><a href="OFERTA.HTML">OFERTA BIBLIOTEKI</a></li>
+            <li><a href="WYPOŻYCZALNIA.HTML">WYPOŻYCZALNIA</a></li>
+            <li><a href="REJESTRACJA.HTML">REJESTRACJA</a></li>
+            <li><a href="FORUM_DYSKUSYJNE.HTML">FORUM DYSKUSYJNE</a></li>
+            <li><a href="RANKING_CZYTELNIKÓW.HTML">RANKING CZYTELNIKÓW</a></li>
+            <li><a href="GALERIA.HTML">GALERIA</a></li>
+            <li><a href="NASZA_BIBLIOTEKA.HTML">NASZA BIBLIOTEKA</a></li>
+            <li><a href="MAPA_.HTML">MAPA</a></li>
+        </ul>
+    </nav>
+    <article>
+        <h2>Sprawdź kwotę za opóźniony termin zwrotu</h2>
+        <label>Dni wypożyczenia (kara obowiazuje po 14 dniu):</label><br>
+  <input type="number" id="daysInput" min="1"><br>
+
+  <label>Stan jakości książki (1–6)*:</label><br>
+  <input type="number" id="qualityInput" min="1" max="6"><br>
+
+  <label>Zniżka (%) [np. studencka]:</label><br>
+  <input type="number" id="discountInput" min="0" max="20"><br>
+
+  <label>Liczba wypożyczonych książek**:</label><br>
+  <input type="number" id="booksInput" min="1"><br>
+
+  <button onclick="calculate()">Oblicz parametr</button>
+
+  <div id="result"></div>
+
+  <script>
+    function calculate() {
+      const days = parseFloat(document.getElementById("daysInput").value);
+      const quality = parseFloat(document.getElementById("qualityInput").value);
+      const discount = parseFloat(document.getElementById("discountInput").value);
+      const books = parseFloat(document.getElementById("booksInput").value);
+
+      if (isNaN(days) || isNaN(quality) || isNaN(discount) || isNaN(books) || books === 0) {
+        document.getElementById("result").textContent = "Proszę uzupełnić wszystkie pola poprawnie.";
+        return;
+      }
+
+      const discountFactor = (100 - discount) / 100;
+      const result = ((days / quality) * discountFactor) / books;
+
+      document.getElementById("result").textContent = `Wynik parametru: ${result.toFixed(2)}`;
+    }
+  </script>
+    *Ocena stanu jakości przez osobę odbierającą zwrot książki gdzie 1-nowa , 6- Braki kluczowych treści
+    <br>
+    **Liczba książek wypożyczonych przez czytelnika w momencie zwrotu
+    <h3><center>Główny punkt wypożyczlni znajduje się w Poznaniu na ulicy Wirtualnej 17 (wejście przez główną bramę)</center></h3>
+    </article>
+
+    <aside><iframe src="pomoc2/Sesja.html" height="750" width="250"></iframe></aside>
+
+    <footer>
+        
+        Projekt strony internetowej wykonany w ramach zaliczenia przedmiotu MO: TIiSKwE na kierunku Energetyka. <br>
+        Prawa autorskie Michał Wojtysiak
+    </footer>
+
+</body>
+</html>

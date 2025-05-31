@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strona główna</title>
+    <link rel="stylesheet" href="pomoc2/layout.css">
+    <link rel="stylesheet" href="pomoc2/menu.css">
+
+    <style>
+        fieldset{
+            width: 650px;
+            border-radius: 20px;
+            border: 3px double color-mix(in srgb-linear, yellow 60%, black 40%);
+            margin: auto;
+        }
+        form{
+           width:  400px;
+            margin: 5px;
+        }
+        label{  
+            display: inline-block;
+            width: 100px;
+            padding: 5px;
+        }
+    </style>
+    <script>
+        function showAlert() {
+            alert('Wysłane');
+        }
+    </script>
+    </head>
+<body>
+    
+    <header> <h1><center>Zostań Czyteknikiem Naszej Bilblioteki!</center>  </h1></header>
+    <!-- znacznik do menu -->
+    <nav>
+        <ul>
+            <li><a href="STRONA GŁÓWNA.HTML">STRONA GŁÓWNA</a></li>
+            <li><a href="AKTUALNOŚCI.HTML">AKTUALNOŚCI</a></li>
+            <li><a href="OFERTA.HTML">OFERTA BIBLIOTEKI</a></li>
+            <li><a href="WYPOŻYCZALNIA.HTML">WYPOŻYCZALNIA</a></li>
+            <li><a href="REJESTRACJA.HTML">REJESTRACJA</a></li>
+            <li><a href="FORUM_DYSKUSYJNE.HTML">FORUM DYSKUSYJNE</a></li>
+            <li><a href="RANKING_CZYTELNIKÓW.HTML">RANKING CZYTELNIKÓW</a></li>
+            <li><a href="GALERIA.HTML">GALERIA</a></li>
+            <li><a href="NASZA_BIBLIOTEKA.HTML">NASZA BIBLIOTEKA</a></li>
+            <li><a href="MAPA_.HTML">MAPA</a></li>
+        </ul>
+    </nav>
+    <article>
+         <form action="mailto: michal.wojtysia@student.put.poznan.pl" method="post"></form>
+         <h2>Zarejestrój się aby dołączyć do czytelników biblioteki. Wyślij nam formularz zgłoszeniowy. </h2>
+    <fieldset>
+        <legend><center>Dane Rejestracyjne</center></legend>
+        <label for="Imię">Imię <em>*</em></label>
+        <input type="text" name="Imię" id="Imię" autofocus  placeholder="wpisz swoje Imie" required>
+        <br>
+        <br>
+        <label for="Naz">Godność<em>*</em></label>
+        <input type="text" name="Naz" id="Naz" autofocus  placeholder="wpisz swoje Nazwisko" required>
+        <br>
+        <br>
+        <label for="tel">Nr. Telefonu<em>*</em></label>
+        <input type="tel" name="tel" id="tel" placeholder="(+48) 000-000-000" pattern="(+[0-9]{2} [0-9]{3}-[0-9]{3}-[0-9]{3})" required>
+        <br>
+        <br>
+        <label for="Mali">Email <em>*</em></label>
+        <input type="email" name="mail" id="mail" placeholder="wpisz swój adres email" required>
+        <br>
+        <br>
+        <label for="Mal">Adres <em>*</em></label>
+        <input type="adres" name="adres" id="adres" placeholder="wpisz swój Adres" required>
+        <br>
+        <br>
+         <label for="Mal">Miejscowość<em>*</em></label>
+    <!--<input type="miejscowość" name="miejsc" id="miejsc" placeholder="wpisz swoje Miasto" required> !-->
+    <select name="town" id="town">Wybierz swoje miasto
+        <option value="Pozna">Poznań</option>
+        <option value="Wrzes">Września</option>
+        <option value="Gniez">Gniezno</option>
+    </select>
+        <br>
+        <br>
+         <legend>Wpisz płeć</legend>
+         <input type="radio" name="tytuł" id="tytuł">
+        <label for="tytuł">Mężczyzna</label> <br> 
+        <input type="radio" name="tytuł" id="tytuł">
+        <label for="tytuł">Kobieta</label> <br><br>
+        
+        <legend>Przysługująca ulga (Opcjonalnie wpisz ulgę)</legend>
+        <textarea name="opinia" id="opinia" cols="50" rows="5"></textarea>
+        <br>
+        <label for="plik">Załącz dokument</label>
+        <input type="file" name="plilk" id="plik">
+    </fieldset>
+     <form>
+        <input type="submit" value="Wyślij" onclick="showAlert(); return false;">
+    </form> <input type="reset" value="Czyść">
+   
+
+    </article>
+    <aside><iframe src="pomoc2/Sesja.html" height="750" width="250"></iframe></aside>
+
+    <footer>
+        
+        Projekt strony internetowej wykonany w ramach zaliczenia przedmiotu MO: TIiSKwE na kierunku Energetyka. <br>
+        Prawa autorskie Michał Wojtysiak
+    </footer>
+
+</body>
+</html>

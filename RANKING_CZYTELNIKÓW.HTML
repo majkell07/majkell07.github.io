@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strona główna</title>
+    <link rel="stylesheet" href="pomoc2/layout.css">
+    <link rel="stylesheet" href="pomoc2/menu.css">
+   
+    </head>
+<body>
+    
+    <header> <h1> <center>Ranking Czytelników Bilblioteki "Iskierka"</center> </h1></header>
+    <!-- znacznik do menu -->
+    <nav>
+        <ul>
+            <li><a href="STRONA GŁÓWNA.HTML">STRONA GŁÓWNA</a></li>
+            <li><a href="AKTUALNOŚCI.HTML">AKTUALNOŚCI</a></li>
+            <li><a href="OFERTA.HTML">OFERTA BIBLIOTEKI</a></li>
+            <li><a href="WYPOŻYCZALNIA.HTML">WYPOŻYCZALNIA</a></li>
+            <li><a href="REJESTRACJA.HTML">REJESTRACJA</a></li>
+            <li><a href="FORUM_DYSKUSYJNE.HTML">FORUM DYSKUSYJNE</a></li>
+            <li><a href="RANKING_CZYTELNIKÓW.HTML">RANKING CZYTELNIKÓW</a></li>
+            <li><a href="GALERIA.HTML">GALERIA</a></li>
+            <li><a href="NASZA_BIBLIOTEKA.HTML">NASZA BIBLIOTEKA</a></li>
+            <li><a href="MAPA_.HTML">MAPA</a></li>
+        </ul>
+    </nav>
+    <article>
+        <h2>Zobacz tegoroczny majowy ranking powieści fantasy! </h2>
+      <canvas id="barChart" width="700" height="400"></canvas>
+
+<script>
+  const canvas = document.getElementById("barChart");
+  const ctx = canvas.getContext("2d");
+
+  // Dane
+  const data = [
+    { label: "Cisza Pustyni", value: 30, color: "#4CAF50" },
+    { label: "Wrota Płónocy", value: 45, color: "#2196F3" },
+    { label: "Powrót Run", value: 90, color: "#FFC107" },
+    { label: "Uczta dla Wron", value: 60, color: "#F44336" },
+     { label: "Czerwony Wąż", value: 15, color: "purple" }
+  ];
+
+  const chart = {
+    width: canvas.width,
+    height: canvas.height,
+    padding: 70,
+    barWidth: 50,
+    space: 40,
+    maxValue: Math.ceil(Math.max(...data.map(d => d.value)) / 100) * 100, // zaokrąglona maks. wartość
+    ySteps: 5
+  };
+
+  function drawChart() {
+    ctx.clearRect(0, 0, chart.width, chart.height);
+
+    drawAxes();
+    drawBars();
+    drawLegend();
+  }
+
+  function drawAxes() {
+    const stepValue = chart.maxValue / chart.ySteps;
+    const chartHeight = chart.height - chart.padding * 2;
+
+    ctx.beginPath();
+    ctx.moveTo(chart.padding, chart.padding);
+    ctx.lineTo(chart.padding, chart.height - chart.padding);
+    ctx.lineTo(chart.width - chart.padding, chart.height - chart.padding);
+    ctx.stroke();
+
+    ctx.textAlign = "right";
+    ctx.textBaseline = "middle";
+    ctx.fillStyle = "#000";
+
+    for (let i = 0; i <= chart.ySteps; i++) {
+      const yValue = stepValue * i;
+      const y = chart.height - chart.padding - (yValue / chart.maxValue) * chartHeight;
+
+      ctx.beginPath();
+      ctx.moveTo(chart.padding - 5, y);
+      ctx.lineTo(chart.padding, y);
+      ctx.stroke();
+
+      ctx.fillText(`${yValue} głosów`, chart.padding - 10, y);
+    }
+  }
+
+  function drawBars() {
+    const chartHeight = chart.height - chart.padding * 2;
+
+    data.forEach((d, i) => {
+      const barHeight = (d.value / chart.maxValue) * chartHeight;
+      const x = chart.padding + i * (chart.barWidth + chart.space) + chart.space;
+      const y = chart.height - chart.padding - barHeight;
+
+      ctx.fillStyle = d.color;
+      ctx.fillRect(x, y, chart.barWidth, barHeight);
+
+      ctx.fillStyle = "#000";
+      ctx.textAlign = "center";
+      ctx.fillText(d.label, x + chart.barWidth / 2, chart.height - chart.padding + 15);
+    });
+  }
+
+  function drawLegend() {
+    const startX = chart.width - chart.padding - 150;
+    let startY = chart.padding;
+
+    ctx.font = "14px Arial";
+    data.forEach((d, i) => {
+      ctx.fillStyle = d.color;
+      ctx.fillRect(startX, startY + i * 25, 15, 15);
+
+      ctx.fillStyle = "#000";
+      ctx.fillText(d.label, startX + 20, startY + i * 25 + 12);
+    });
+  }
+
+  drawChart();
+</script>
+<h3>"Powrót Run" autorstwa Anny Kamińskiej został wybrany najlepszą kiążką do przeczytania w maju! </h3>
+    </article>
+
+     <aside><iframe src="pomoc2/Sesja.html" height="750" width="250"></iframe></aside>
+
+    <footer>
+        
+        Projekt strony internetowej wykonany w ramach zaliczenia przedmiotu MO: TIiSKwE na kierunku Energetyka. <br>
+        Prawa autorskie Michał Wojtysiak
+    </footer>
+
+</body>
+</html>

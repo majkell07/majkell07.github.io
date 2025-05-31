@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strona główna</title>
+    <link rel="stylesheet" href="pomoc2/layout.css">
+    <link rel="stylesheet" href="pomoc2/menu.css">
+    <style>
+   
+    #comments {
+      margin-top: 20px;
+    }
+    .comment {
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background-color: #f9f9f9;
+      
+    }
+    .h{
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background-color: #f9f9f9;
+    }
+  </style>
+    </head>
+<body>
+    
+    <header> <h1> <center>Forum Dyskusyjne - Podziel się własnymi wrażeniami!</center></h1></header>
+    <!-- znacznik do menu -->
+    <nav>
+        <ul>
+            <li><a href="STRONA GŁÓWNA.HTML">STRONA GŁÓWNA</a></li>
+            <li><a href="AKTUALNOŚCI.HTML">AKTUALNOŚCI</a></li>
+            <li><a href="OFERTA.HTML">OFERTA BIBLIOTEKI</a></li>
+            <li><a href="WYPOŻYCZALNIA.HTML">WYPOŻYCZALNIA</a></li>
+            <li><a href="REJESTRACJA.HTML">REJESTRACJA</a></li>
+            <li><a href="FORUM_DYSKUSYJNE.HTML">FORUM DYSKUSYJNE</a></li>
+            <li><a href="RANKING_CZYTELNIKÓW.HTML">RANKING CZYTELNIKÓW</a></li>
+            <li><a href="GALERIA.HTML">GALERIA</a></li>
+            <li><a href="NASZA_BIBLIOTEKA.HTML">NASZA BIBLIOTEKA</a></li>
+            <li><a href="MAPA_.HTML">MAPA</a></li>
+        </ul>
+    </nav>
+    <article>
+        <h2>Czy warto czytać książki powyżej 500 stron? Czy to nie za dużo?</h2>
+
+  <form id="commentForm">
+    <label for="commentInput">Dodaj komentarz:</label><br>
+    <textarea id="commentInput" rows="4" cols="50" required></textarea><br>
+    <button type="submit">Dodaj</button>
+  </form>
+
+  <div id="comments">
+    <h3>Komentarze:</h3>
+    <!-- Komentarze będą dodawane tutaj -->
+      <div id="comments">
+    <div class="comment">
+      Oczywiścię, że warto! Najlepsze książki mają po kilka tomów i w każdym po pareset stron. <br>wikki
+    </div>
+  </div>
+  <div id="comments">
+    <div class="comment">
+      Nie wiem to całkiem sporo czytania dużo czasu trzeba poświęcić. <br>mpk
+    </div>
+  </div>
+  <div id="comments">
+    <div class="comment">
+      Zdecydowanie warto! <br>JUll44
+    </div>
+  </div>
+  <div id="comments">
+    <div class="comment">
+      niektóre mają po kilka tysięcy <br>lukk
+    </div>
+  </div>
+  <div id="comments">
+    <div class="comment">
+      To już chyba naprawdę przesada <br> mpk
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("commentForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const input = document.getElementById("commentInput");
+      const commentText = input.value.trim();
+
+      if (commentText === "") return;
+
+      const commentDiv = document.createElement("div");
+      commentDiv.classList.add("comment");
+      commentDiv.textContent = commentText;
+
+      document.getElementById("comments").appendChild(commentDiv);
+
+      input.value = ""; // wyczyść pole po dodaniu komentarza
+    });
+  </script>
+
+    </article>
+
+     <aside><iframe src="pomoc2/Sesja.html" height="750" width="250"></iframe></aside>
+
+    <footer>
+       
+        Projekt strony internetowej wykonany w ramach zaliczenia przedmiotu MO: TIiSKwE na kierunku Energetyka. <br>
+        Prawa autorskie Michał Wojtysiak
+    </footer>
+
+</body>
+</html>
