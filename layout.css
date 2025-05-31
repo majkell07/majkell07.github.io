@@ -1,0 +1,140 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    width: 1300px;
+    margin: auto;
+    background-color: aliceblue;
+}
+header{
+    background-color: rgb(5, 253, 199);
+    padding: 5px;
+    
+}
+body>header{
+    width: 100%;
+}
+article>header{
+    text-align: center;
+    width: 100%;
+}
+article>p, article>ol{
+    padding-left: 30px;
+    padding-right: 30px;
+    font-size: large;
+    grid-area: article;
+}
+
+nav, article, aside{
+    height: 750px;
+    border: 1px solid rgb(150, 153, 155);
+    float: left;
+}
+
+nav{
+    width: 250px;
+    display: block;
+}
+article{
+    width: 800px;
+    overflow: auto;
+     padding: 20px; 
+}
+aside{
+    width: 250px;
+}
+body>footer{
+    border: 1px solid rgb(255, 153, 0);
+    width: 1300px;
+   /* float: left; */
+    clear: both;
+}
+body>div>article{
+        grid-area: article;
+        overflow: auto;}
+
+@media screen and (max-width:1024px) {
+    
+    .grid{
+        grid-template-columns: 590px 1fr;
+        grid-template-rows:  60px auto 800px 80px;
+        grid-template-areas: 
+        "header header"
+        "nav nav"
+        "article aside"
+        "footer footer";
+    }
+
+    header{
+        grid-area: header;
+        text-align: center;
+        background-color: rgb(155, 248, 5);
+    }
+    nav{
+    grid-area: nav;
+       display: flex;
+       flex-wrap: wrap;
+       align-items: center;
+       position: sticky;
+       top:0px;
+    }
+    /* aside{
+        display: none;
+    } */
+    body>div>article{
+        grid-area: article;
+        overflow: auto;
+    }
+    body>div>footer{
+        grid-area: footer;
+        border: 4px dotted blue;
+        background-color: rgb(64, 31, 31);
+        color: white;
+    }
+}
+
+@media screen and (max-width:800px) {
+    
+    .grid{
+        grid-template-columns: 100vw;
+        grid-template-rows: 45px auto 160px 600px 80px;
+        grid-template-areas: 
+        "header"
+        
+        "article"
+        "nav"
+        "footer";
+    }
+
+    header h1{
+        font-size: 24px; 
+    }
+     body>div>article{
+        grid-area: article;
+        text-align: left;
+    } 
+    nav{
+        grid-area: nav;      
+    }
+    .nav1{
+        width: 100vw;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        position: sticky;
+        top: 0;
+    }
+    body>div>footer{
+        grid-area: footer;
+    }
+
+    iframe, aside{
+        width: 600px;
+        height: 160px;
+        border: none;
+    }
+
+}
+@media screen and (max-width:600px) {
+    
+}

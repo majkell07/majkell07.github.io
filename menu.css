@@ -1,0 +1,35 @@
+nav ul, nav ul li{
+    display: block;
+    list-style: none;
+    margin: 0px;
+    padding: 2px;
+}
+ nav ul{
+    width: 250px;
+    padding: 1px 5px 1px 5px;
+    background-color: rgb(3, 179, 135);
+    border: 0px double white;
+ }
+
+ nav ul li{
+    border-bottom: 1px solid white;
+ }
+
+ nav ul li a:visited, nav ul li a:link{
+    display: block;
+    width: 235px;
+    background-color: rgb(253, 103, 3);
+    text-decoration: none;
+    padding: 7px;
+    color: #def;
+    font-weight: bold;
+    border-left: 15px solid rgb(3, 30, 110);
+ } 
+
+ nav ul li a:hover{
+    width: 235px;
+    background-color: rgb(255, 174, 0);
+    color: white;
+    border-left: 25px solid rgb(24, 209, 255);
+ }
+nav{background-color: rgb(3, 179, 135);}

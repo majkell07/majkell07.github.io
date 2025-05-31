@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>informacje dod</title>
+    <style>
+       
+ body{
+            background-color: rgb(88, 154, 241);
+        }
+        div.javascript{
+            width: 100%;
+            margin: 0px;
+            padding: 0px;
+        }
+     
+        
+       
+    </style>
+   
+    <script src="zegar.js"></script>
+</head>
+<body>
+    
+   
+<h2>Sesja</h2>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const licznikElement = document.getElementById("Licznik");
+
+  if (!sessionStorage.getItem("visited")) {
+    let odwiedziny = localStorage.getItem("odwiedziny");
+
+    if (!odwiedziny) {
+      odwiedziny = 1;
+    } else {
+      odwiedziny = parseInt(odwiedziny) + 1;
+    }
+
+    localStorage.setItem("odwiedziny", odwiedziny);
+    sessionStorage.setItem("visited", "true");
+  }
+
+  const aktualna = localStorage.getItem("odwiedziny") || 1;
+
+  if (licznikElement) {
+    licznikElement.textContent = `Liczba odwiedzin: ${aktualna}`;
+  }
+});
+</script>
+<div id="Licznik"></div>
+
+    <section class="javascript" id="java2">
+        <h3>Zegarek</h3>
+        Aktualny czas: <input type="text" id="clock"><br>
+        Czas na stronie: <input type="text" id=stoper>
+
+    </section>
+     <h3>Dzisiejsza data:</h3>
+  <div id="data"></div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const dataElement = document.getElementById("data");
+
+      const dzisiaj = new Date();
+      const opcje = { weekday: "long", year: "numeric", month: "long", day: "numeric" };
+
+      const sformatowanaData = dzisiaj.toLocaleDateString("pl-PL", opcje);
+      dataElement.textContent = sformatowanaData.charAt(0).toUpperCase() + sformatowanaData.slice(1);
+    });
+  </script>
+
+</body>
+</html>
